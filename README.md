@@ -2,7 +2,15 @@
 
 Semantic deduplication using vector embeddings. Find and group similar text items using cosine similarity.
 
+## Why This Exists
+
 Extracted from a production knowledge extraction pipeline where we needed to deduplicate thousands of text items (support tickets, FAQ entries, documentation fragments) before feeding them into downstream systems. Instead of exact string matching, this library compares items by meaning -- so "Cannot log in" and "Login page broken" get grouped together.
+
+## Use Cases
+
+- **Support ticket deduplication** -- Collapse duplicate inbound tickets before they hit the queue, reducing triage time.
+- **Knowledge base article merging** -- Identify near-duplicate articles or FAQ entries that should be consolidated.
+- **Document clustering for RAG pipelines** -- Group similar chunks before retrieval so your LLM gets diverse context, not five paraphrases of the same paragraph.
 
 ## Install
 
@@ -63,6 +71,35 @@ const groups = await deduplicate(items, { threshold: 0.85 });
 //   { canonical: '1', duplicates: ['2'] },
 //   { canonical: '3', duplicates: [] }
 // ]
+```
+
+## Demo
+
+Run the example with no API key required -- it uses pre-computed embeddings:
+
+```bash
+npx tsx examples/basic.ts
+```
+
+Output:
+
+```
+=== Vector Dedup Demo ===
+
+Pairwise similarities:
+  ticket-1 vs ticket-2: 0.976
+  ticket-1 vs ticket-4: 0.181
+  ticket-4 vs ticket-5: 0.988
+
+Dedup groups (threshold=0.95):
+  ticket-1 + duplicates: ticket-2, ticket-3
+  ticket-4 + duplicates: ticket-5
+  ticket-6 (unique)
+
+Search for "authentication issues":
+  ticket-3: similarity=0.999
+  ticket-2: similarity=0.994
+  ticket-1: similarity=0.992
 ```
 
 ## API Reference
