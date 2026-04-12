@@ -1,0 +1,23 @@
+{
+  "name": "@protectyr-labs/vector-dedup",
+  "version": "0.1.0",
+  "description": "Semantic deduplication using vector embeddings",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": ["embeddings", "deduplication", "semantic-search", "cosine-similarity", "vector"],
+  "author": "Alexander Madaniev",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.50.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
