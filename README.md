@@ -55,6 +55,14 @@ const groups = await deduplicate([
 - **Semantic search** -- `findSimilar()` with configurable threshold + limit
 - **OpenAI embeddings built in** -- or bring your own vectors
 
+## Use Cases
+
+**Support ticket deduplication** -- 100 tickets come in. 30 are the same issue worded differently. Group them by semantic similarity to reduce duplicate work.
+
+**Knowledge base maintenance** -- New articles are extracted from documents. Before adding, check if a semantically similar article already exists. Merge instead of duplicating.
+
+**Document clustering for RAG** -- Before feeding documents to a retrieval pipeline, deduplicate to avoid returning 5 copies of the same content.
+
 ## API
 
 | Function | Description |
