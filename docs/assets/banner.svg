@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" width="1200" height="220">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0f1a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="groupLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.1"/>
+    </linearGradient>
+    <!-- Glow filter for cluster highlights -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="220" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#a78bfa">
+    <line x1="0" y1="40" x2="1200" y2="40"/>
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="160" x2="1200" y2="160"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+  </g>
+
+  <!-- LEFT SIDE: Title and subtitle -->
+  <text x="60" y="90" font-family="Segoe UI, system-ui, sans-serif" font-size="42" font-weight="700" fill="#f0f0f0" letter-spacing="-0.5">vector-dedup</text>
+  <text x="60" y="125" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#a78bfa" font-weight="500" letter-spacing="0.5">SEMANTIC DEDUPLICATION</text>
+  <text x="60" y="158" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#8888a0">Find and group similar text using vector embeddings.</text>
+  <text x="60" y="178" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#8888a0">Cosine similarity. Threshold grouping. Zero infrastructure.</text>
+
+  <!-- Accent underline -->
+  <rect x="60" y="98" width="120" height="2" rx="1" fill="url(#accent)" opacity="0.7"/>
+
+  <!-- RIGHT SIDE: Embedding space visualization -->
+  <!-- Axes hint -->
+  <line x1="620" y1="195" x2="1140" y2="195" stroke="#333355" stroke-width="1" opacity="0.3"/>
+  <line x1="620" y1="25" x2="620" y2="195" stroke="#333355" stroke-width="1" opacity="0.3"/>
+
+  <!-- Cluster 1 region (login/auth issues) - top area -->
+  <ellipse cx="780" cy="65" rx="85" ry="40" fill="#a78bfa" opacity="0.04" filter="url(#softGlow)"/>
+
+  <!-- Connections within cluster 1 -->
+  <line x1="745" y1="55" x2="795" y2="50" stroke="#a78bfa" stroke-width="1" opacity="0.25"/>
+  <line x1="795" y1="50" x2="810" y2="75" stroke="#a78bfa" stroke-width="1" opacity="0.25"/>
+  <line x1="745" y1="55" x2="810" y2="75" stroke="#a78bfa" stroke-width="1" opacity="0.2"/>
+
+  <!-- Cluster 1 dots (similar items grouped) -->
+  <circle cx="745" cy="55" r="5" fill="#a78bfa" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="795" cy="50" r="5" fill="#a78bfa" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="810" cy="75" r="4.5" fill="#a78bfa" opacity="0.7"/>
+
+  <!-- Cluster 1 label -->
+  <text x="780" y="105" font-family="Segoe UI, system-ui, sans-serif" font-size="9" fill="#a78bfa" text-anchor="middle" opacity="0.6">group-1</text>
+
+  <!-- Cluster 2 region (data/export) - middle-right -->
+  <ellipse cx="1020" cy="100" rx="70" ry="35" fill="#7c3aed" opacity="0.04" filter="url(#softGlow)"/>
+
+  <!-- Connections within cluster 2 -->
+  <line x1="990" y1="90" x2="1045" y2="95" stroke="#7c3aed" stroke-width="1" opacity="0.25"/>
+  <line x1="1045" y1="95" x2="1020" y2="115" stroke="#7c3aed" stroke-width="1" opacity="0.2"/>
+
+  <!-- Cluster 2 dots -->
+  <circle cx="990" cy="90" r="5" fill="#7c3aed" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="1045" cy="95" r="5" fill="#7c3aed" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="1020" cy="115" r="4" fill="#7c3aed" opacity="0.6"/>
+
+  <!-- Cluster 2 label -->
+  <text x="1020" y="142" font-family="Segoe UI, system-ui, sans-serif" font-size="9" fill="#7c3aed" text-anchor="middle" opacity="0.6">group-2</text>
+
+  <!-- Scattered unique items (no group) -->
+  <circle cx="680" cy="150" r="3.5" fill="#555580" opacity="0.5"/>
+  <circle cx="900" cy="165" r="3.5" fill="#555580" opacity="0.5"/>
+  <circle cx="1090" cy="55" r="3" fill="#555580" opacity="0.4"/>
+  <circle cx="650" cy="95" r="3" fill="#555580" opacity="0.4"/>
+  <circle cx="950" cy="45" r="3" fill="#555580" opacity="0.35"/>
+  <circle cx="1100" cy="170" r="3" fill="#555580" opacity="0.35"/>
+
+  <!-- Arrow showing collapse: duplicates -> canonical -->
+  <!-- Small converging arrows toward cluster 1 canonical -->
+  <path d="M 860 60 Q 840 55 815 72" stroke="#a78bfa" stroke-width="0.8" fill="none" opacity="0.3" stroke-dasharray="3,3"/>
+  <path d="M 870 85 Q 850 80 815 78" stroke="#a78bfa" stroke-width="0.8" fill="none" opacity="0.3" stroke-dasharray="3,3"/>
+
+  <!-- "threshold = 0.85" annotation -->
+  <text x="880" y="185" font-family="Consolas, monospace" font-size="10" fill="#555580" opacity="0.5">threshold = 0.85</text>
+
+  <!-- Decorative: faint coordinate labels -->
+  <text x="625" y="208" font-family="Consolas, monospace" font-size="8" fill="#333355" opacity="0.4">embedding dim 1</text>
+  <text x="608" y="20" font-family="Consolas, monospace" font-size="8" fill="#333355" opacity="0.4" text-anchor="end">dim 2</text>
+</svg>
